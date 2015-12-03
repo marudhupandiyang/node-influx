@@ -75,6 +75,7 @@ InfluxDB.prototype.url = function(database, query) {
     query: _.extend({
       u: this.options.username,
       p: this.options.password,
+      databaseName: this.options.database,
       time_precision: this.options.timePrecision
     }, query || {})
   });
@@ -232,7 +233,7 @@ InfluxDB.prototype.writePoints = function(seriesName, points, options, callback)
 
 InfluxDB.prototype.query = function(query, callback) {
   this.request.get({
-    url: this.url('db/' + this.options.database + '/series', { q: query }),
+    url: this.url('query', { q: query }),
     json: true
   }, this._parseCallback(callback));
 };
