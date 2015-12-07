@@ -75,7 +75,7 @@ InfluxDB.prototype.url = function(database, query) {
     query: _.extend({
       u: this.options.username,
       p: this.options.password,
-      databaseName: this.options.database,
+      db: this.options.database,
       time_precision: this.options.timePrecision
     }, query || {})
   });
